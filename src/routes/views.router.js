@@ -11,7 +11,7 @@ router.get('/contact',executePolicies(["USER"]), viewsController.contact);
 router.get('/register',viewsController.register);
 router.get('/profile', executePolicies(["USER"]), viewsController.profile)
 router.get('/loginFail', viewsController.failLogin)
-router.get('/cart', executePolicies(["USER"]),viewsController.cart);
+router.get('/cart', viewsController.cart);
 router.get('/finishedPurchase',executePolicies(["USER"]), viewsController.finishedPurchase);
 router.get('/logout',executePolicies(["USER"]), viewsController.logout);
 
