@@ -49,7 +49,6 @@ const contact = (req, res) => {
 //}
 
 const cart = async(req,res) => {
-    const name = req.user.id;
     const cartId = req.user.cart
     const cart = await cartService.getCartById(cartId, {populate:true});
     console.log(cart.products);
@@ -60,7 +59,6 @@ const cart = async(req,res) => {
     const totalPrice = products.reduce((acum, product) => acum + product.price * product.quantify, 0)
     res.render('cart', {
         products,
-        name,
         user: req.user,
         totalPrice,
         title: "Cart - Pandora"
