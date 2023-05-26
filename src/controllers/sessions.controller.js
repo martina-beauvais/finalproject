@@ -21,7 +21,7 @@ const register = async(req,res) => {
             email,
             password: hashedPWD,
             cart: cart._id,
-            avatar: `${req.protocol}://${req.hostname}:${process.env.PORT}/img/${file.filename}`,
+            avatar: `${req.protocol}://${req.hostname}/img/${file.filename}`,
             library: []
         }
         const result = await userService.createUser(newUser);
