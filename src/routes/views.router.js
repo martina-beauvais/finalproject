@@ -1,0 +1,18 @@
+import { Router } from "express";
+import { executePolicies } from "../middlewares/auth.js";
+import viewsController from "../controllers/views.controller.js";
+
+const router = Router();
+
+router.get('/home', executePolicies(["USER"]), viewsController.home);
+router.get('/products', executePolicies(["USER"]),viewsController.products);
+router.get('/contact',executePolicies(["USER"]), viewsController.contact);
+router.get('/register',viewsController.register);
+router.get('/login',viewsController.login);
+router.get('/profile', executePolicies(["USER"]), viewsController.profile)
+router.get('/loginFail', viewsController.failLogin)
+router.get('/cart', executePolicies(["USER"]),viewsController.cart);
+router.get('/finishedPurchase',executePolicies(["USER"]), viewsController.finishedPurchase);
+router.get('/logout',executePolicies(["USER"]), viewsController.logout);
+
+export default router;

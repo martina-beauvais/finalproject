@@ -1,0 +1,45 @@
+<div>
+    <h1>Hi {{user.firstName}}, this is your cart</h1>
+    {{#if products}}
+    <br>
+    <h4>Total price: ${{this.totalPrice}}</h4>
+    {{#each products}}
+    <div class="cardCart shadow">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img src="{{this.thumbnail}}" alt="" class="imagenCart">
+                </div>
+                <div class="col">
+                    <p>{{this.title}} x {{this.quantify}}</p>
+                    <p>${{this.price}}</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    {{/each}} 
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="button" id="purchaseButton">
+            <a href="http://localhost:8080/api/carts/purchase/">
+                <strong>
+                    Finish purchase
+                </strong>
+            </a>
+        </button>
+        <button class="button">
+            <a href="/products">Continue shopping</a>
+        </button>    
+    </div>
+    {{else}}
+    <h5>No products in your cart yet</h5>
+    <a href="/products">
+        <button class="button">
+            Let's start shopping
+        </button>
+    </a>
+    {{/if}}
+</div>
+
+<!--<script src="/js/cart.js"></script>-->
+<link rel="stylesheet" href="/css/cart.css">
