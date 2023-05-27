@@ -1,3 +1,16 @@
+document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.getElementById("pyramid-loader").style.visibility = "visible";
+    } else {
+        setTimeout(() => {
+            document.getElementById("pyramid-loader").style.display ="none";
+            document.querySelector("body").style.visibility = "visible";
+        }, 5000)
+    }
+};
+
+
 const form = document.getElementById('loginForm');
 
 form.addEventListener('submit', async evt => {
@@ -19,3 +32,4 @@ form.addEventListener('submit', async evt => {
         }
     });
 })
+

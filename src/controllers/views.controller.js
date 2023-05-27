@@ -1,4 +1,4 @@
-import { cartService, userService, productService, historyService } from "../dao/index.js";
+import { cartService, productService, historyService } from "../dao/index.js";
 
 const products = async(req, res) => {
     const page = req.query.page||1;
@@ -12,41 +12,59 @@ const products = async(req, res) => {
         prePage: pagination.prePage,
         page: pagination.page
     }
-    res.render('products', {products, paginationData, user: req.user, title: "Products - Pandora"})
+    res.render('products', {
+        products, 
+        paginationData, 
+        user: req.user, 
+        title: "Products - Pandora",
+        css: 'products'
+    })
 };
 
 const register = (req, res) => {
-    res.render('register', {title: "Register - Pandora"})
+    res.render('register', {
+        title: "Register - Pandora",
+        css: 'register'
+    })
 };
 
 const login = (req, res) => {
-    res.render('login', {title: "Log In - Pandora"})
+    res.render('login', {
+        title: "Log In - Pandora",
+        css: '../public/css/login.css'
+    })
 };
 
 const profile = async (req, res) => {
     const history = await historyService.getHistoryBy({
         user:req.user._id
     })
-    
-    res.render('profile',{user: req.user, events: history ? history.events:[], title: "Profile - Pandora"})
-}
+    res.render('profile',{
+        user: req.user, 
+        events: history ? history.events:[], 
+        title: "Profile - Pandora",
+        css: 'profile'
+    })
+};
 
 const failLogin = (req, res) => {
     res.render('loginFail')
 };
 
 const home = (req, res) => {
-    res.render('home', {user: req.user, title: "Home - Pandora"})
+    res.render('home', {
+        user: req.user, 
+        title: "Home - Pandora", css: 'home'
+    })
 };
 
 const contact = (req, res) => {
-    res.render('contact', {user: req.user, title: "Contact - Pandora"})
+    res.render('contact', {
+        user: req.user, 
+        title: "Contact - Pandora",
+        css: 'contact'
+    })
 };
-
-//const product = async(req, res) => {
-//    const product = await productService.getProductById({_id: req.id})
-//    res.render('product', {product})
-//}
 
 const cart = async(req,res) => {
     const cartId = req.user.cart
@@ -61,18 +79,36 @@ const cart = async(req,res) => {
         products,
         user: req.user,
         totalPrice,
-        title: "Cart - Pandora"
+        title: "Cart - Pandora",
+        css: 'cart'
     })
 };
 
+const finishPurchase = async(req,res) =>{
+    res.render('payMethod', {
+        user:req.user, 
+        title: "Pay Method - Pandora", 
+        css: 'cart'
+    })
+}
+
 const finishedPurchase = async (req, res) => {
     //const user = await userService.getUserBy({_id:req.user.id})
-    res.render('finishedPurchase', { user: req.user , title: "Finished Purchase - Pandora"});
+    res.render('finishedPurchase', { 
+        user: req.user , 
+        title: "Finished Purchase - Pandora", 
+        css: 'purchase'
+    });
 };
+
 
 const logout = async (req,res) => {
     res.clearCookie(process.env.JWT_COOKIE)
-    res.render('logout', {user: req.user, title: "Log out - Pandora"})
+    res.render('logout', {
+        user: req.user, 
+        title: "Log out - Pandora",
+        css: 'logout'
+    })
 }
 
 export default {
@@ -84,6 +120,7 @@ export default {
     profile,
     failLogin,
     cart,
+    finishPurchase,
     finishedPurchase,
     logout
 }

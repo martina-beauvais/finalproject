@@ -1,3 +1,12 @@
+<div id="pyramid-loader">
+    <div class="wrapper">
+        <span class="side side1"></span>
+        <span class="side side2"></span>
+        <span class="side side3"></span>
+        <span class="side side4"></span>
+        <span class="shadow"></span>
+    </div>  
+</div>
 <div>
     {{#if products}}
     <h1>Our products</h1>
@@ -73,5 +82,17 @@
     {{/if}}
 </div>
 
-<script src="/js/products.js"></script>
+<script>
+    document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.getElementById("pyramid-loader").style.visibility = "visible";
+    } else {
+        setTimeout(() => {
+            document.getElementById("pyramid-loader").style.display ="none";
+            document.querySelector("body").style.visibility = "visible";
+        }, 2000)
+    }
+    };
+</script>
 <link rel="stylesheet" href="./css/products.css" type="text/css">
