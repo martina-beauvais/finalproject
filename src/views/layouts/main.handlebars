@@ -51,7 +51,7 @@
                     </li>
                 {{else}}
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Log In</a>
+                        <a class="nav-link" href="/">Log In</a>
                     </li>
                 {{/if}}
                 </ul>
@@ -59,6 +59,15 @@
         </div>
     </nav>
     
+    <div id="pyramid-loader">
+        <div class="wrapper">
+            <span class="side side1"></span>
+            <span class="side side2"></span>
+            <span class="side side3"></span>
+            <span class="side side4"></span>
+            <span class="shadow"></span>
+        </div>  
+    </div>
     {{{body}}}
 
 </body>
@@ -72,5 +81,18 @@
 </html>
 
 <link rel="stylesheet" href="./css/main.css">
+<script>
+    document.onreadystatechange = function () {
+    if (document.readyState !== "complete") {
+        document.querySelector("body").style.visibility = "hidden";
+        document.getElementById("pyramid-loader").style.visibility = "visible";
+    } else {
+        setTimeout(() => {
+            document.getElementById("pyramid-loader").style.display ="none";
+            document.querySelector("body").style.visibility = "visible";
+        }, 1000)
+    }
+    };
+</script>
 
 

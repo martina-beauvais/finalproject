@@ -1,16 +1,17 @@
-document.onreadystatechange = function () {
-    if (document.readyState !== "complete") {
-        document.querySelector("body").style.visibility = "hidden";
-        document.getElementById("pyramid-loader").style.visibility = "visible";
-    } else {
-        setTimeout(() => {
-            document.getElementById("pyramid-loader").style.display ="none";
-            document.querySelector("body").style.visibility = "visible";
-        }, 5000)
+const myFunction = document.getElementById('togglePassword');
+const password = document.getElementById('password')
+myFunction.addEventListener('click', function() {
+    if(password.type === "password") {
+        password.type = "text";
+        myFunction.classList.add("fa-eye-slash");
+        myFunction.classList.remove("fa-eye");
     }
-};
-
-
+    else {
+        password.type = "password";
+        myFunction.classList.add("fa-eye");
+        myFunction.classList.remove("fa-eye-slash");
+    }
+});
 const form = document.getElementById('loginForm');
 
 form.addEventListener('submit', async evt => {

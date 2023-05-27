@@ -18,11 +18,6 @@
                             </p>
                         </div>
                     </div>
-                    <!--<div class="leftCol">
-                        <h2><strong>{{user.firstName}}</strong></h2>
-                        <p>email: {{user.email}}</p>
-                        <p>rol: {{user.role}}</p>
-                    </div>-->
                 </div>
             </div>
         </div>
@@ -31,14 +26,16 @@
     <h5 class="profile">Historial de actividades</h5>
     
     <ul>
-        {{#each events}}
-        <li>
-            <div>
-                <p>{{this.event}}</p>
-                <p>{{this.description}}</p>
-            </div>
-        </li>
-        {{/each}}
+        <strong>
+            {{#each events}}
+            <li>
+                <div>
+                    <p>{{this.event}}</p>
+                    <p>{{this.description}}</p>
+                </div>
+            </li>
+            {{/each}}
+        </strong>
     </ul>
     {{else}}
     <h3 class="notactivity">You haven't done any activity on the platform</h3>

@@ -22,10 +22,50 @@ h5{
                 0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
 
+.divisor{
+    margin-top: 10%;
+    width: 75%;
+    margin-left: 10%;
+}
+
+h3{
+    text-align: center;
+}
+.pay{
+    margin-top: 10%;
+    margin-left: 30%;
+}
+
+.form-check{
+    margin-bottom: 2.5%;
+}
+
+.paymethod{
+    margin-top: -2%;
+    width: 13%;
+    height: 13%;
+}
+
+.paymethod2{
+    margin-top:1%;
+    width: 13%;
+    height: 13%;
+}
+
+.paymethod3{
+    width: 7%;
+    height: 7%;
+}
+
+.paymethod4{
+    width: 20%;
+    height: 20%;
+}
+
 .imagenCart{
     width:50%;
-    height:100%;
-    margin-top:-1.8%;
+    height:90%;
+    margin-top: 1%;
     margin-left:20%;
 }
 
@@ -38,6 +78,7 @@ p{
     margin-top: 7%;
     margin-bottom: 10%;
 }
+
 
 .button {
     padding: 1.3em 3em;
@@ -53,6 +94,9 @@ p{
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    margin-left: 43%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .button:hover {
@@ -65,4 +109,3 @@ p{
 .button:active {
     transform: translateY(-1px);
 }
-

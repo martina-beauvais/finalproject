@@ -19,11 +19,48 @@
         </div>
     </div>
     {{/each}} 
+    <hr class="divisor">
+    <h3>Choose a payment method</h3>
+    <div class="pay" aria-required="true">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+                <img src="paypal.png" class="paymethod" alt="" srcset="">
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+                <img src="amazon.png" class="paymethod2" alt="" srcset="">
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+            <label class="form-check-label" for="flexRadioDefault3">
+                <img src="visa.png" class="paymethod3" alt="" srcset="">
+                <i>*1 fee only</i>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+            <label class="form-check-label" for="flexRadioDefault4">
+                <img src="mastercard.png" class="paymethod4" alt="" srcset=""> 
+                <i>*1 fee only</i>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+            <label class="form-check-label" for="flexRadioDefault5">
+                <img src="mercadopago.png" class="paymethod" alt="" srcset="">
+            </label>
+        </div>
+    </div>
     <div class="btn-group" role="group" aria-label="Basic example">
         <button class="button" id="purchaseButton">
-            <a href="/finishPurschase">
+            <a href="/api/carts/purchase/">
                 <strong>
-                    Choose pay method
+                    Finish purchase
                 </strong>
             </a>
         </button>
@@ -41,5 +78,4 @@
     {{/if}}
 </div>
 
-<!--<script src="/js/cart.js"></script>-->
 <link rel="stylesheet" href="/css/cart.css">

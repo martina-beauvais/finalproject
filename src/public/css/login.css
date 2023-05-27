@@ -1,5 +1,5 @@
 .input__container {
-    max-width: 200px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -46,7 +46,7 @@
 .input {
     border: none;
     outline: none;
-    width: 100%;
+    width: 85%;
     padding: 0.6em;
     padding-left: 0.9em;
     border-radius: 20px;
