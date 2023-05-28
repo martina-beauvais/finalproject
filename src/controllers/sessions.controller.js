@@ -46,6 +46,16 @@ const login = async(req,res) => {
     }
 };
 
+const gitHubCallback = async (req, res) => {
+    const user = req.user;
+    req.session.user = {
+        id: user._id,
+        email: user.email,
+        role: user.role
+    };
+    res.send({ status: "success", message: "Logueado con Git-Hub!" })
+};
+
 const loginFail = (req, res) => {
     res.send('Something went wrong.')
 };
@@ -53,5 +63,6 @@ const loginFail = (req, res) => {
 export default{
     register,
     login,
+    gitHubCallback,
     loginFail
 }

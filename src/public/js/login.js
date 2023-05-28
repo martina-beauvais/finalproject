@@ -1,16 +1,9 @@
 const myFunction = document.getElementById('togglePassword');
 const password = document.getElementById('password')
 myFunction.addEventListener('click', function() {
-    if(password.type === "password") {
-        password.type = "text";
-        myFunction.classList.add("fa-eye-slash");
-        myFunction.classList.remove("fa-eye");
-    }
-    else {
-        password.type = "password";
-        myFunction.classList.add("fa-eye");
-        myFunction.classList.remove("fa-eye-slash");
-    }
+    this.classList.toggle("fa-eye-slash")
+    const type = password.getAttribute("type") === "password" ? "text" : "password"
+    password.setAttribute("type", type)
 });
 const form = document.getElementById('loginForm');
 

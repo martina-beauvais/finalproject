@@ -31,8 +31,11 @@
     "nodemailer": "^6.9.2",
     "nodemon": "^2.0.22",
     "passport": "^0.6.0",
+    "passport-github2": "^0.1.12",
+    "passport-google-oidc": "^0.1.0",
     "passport-local": "^1.0.0",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^4.6.3"
+    "swagger-ui-express": "^4.6.3",
+    "winston": "^3.9.0"
   }
 }

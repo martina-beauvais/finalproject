@@ -17,7 +17,27 @@ export const handleKey = async(req, res, next) => {
     };
     key.usagesLeft--;
     if(key.usagesLeft <= 0){
-        //insert mail for no more usages left
+        let mail = '';
+        for(const key of key.user){
+            mail += `<div> <h2>${user.firstName}}</h2> <h4> No more key usages left</h4> </div>` 
+        };
+        const mailResult = await transporter.sendMail({
+            from: `Pandora's Box <marbeauvais17@gmail.com>`,
+            to: ['hfjlarqkhurmuwwz', user.email],
+            subject: `No more key usages left`,
+            html: `
+            <div>
+                <h1>${user.firstName} </h1>
+                <hr>
+                <div>
+                    I'm sorry, you don't have anymore key usages left on our website. 
+                    You'll be assigned to one of employees to deal with the problem personally.
+                    Thank you so much,
+                    Pandora's box.
+                </div>
+            </div>
+            `,
+        })
     };
     await keyService.updateKey(key._id,{usagesLeft:key.usagesLeft});
     next();

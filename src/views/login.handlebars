@@ -1,25 +1,36 @@
+<h1 class="h1">
+    Log in
+</h1>
 <div>
-    <h1>
-        Log in
-    </h1>
-    
     <form id="loginForm">
         <div class="input__container">
             <label class="input__label">Email</label>
-            <input placeholder="Enter your email" class="input" name="email">
+            <input placeholder="Enter your email" class="input" name="email" required>
         </div>
         <div class="input__container">
-            <label class="input__label">Password</label>
-            <input id="password" placeholder="Enter your password" class="input" name="password" type="password"> 
-            <i class="fa fa-eye" id="togglePassword"></i>
+            <div class="password-container">
+                <label class="input__label">Password</label>
+                <input id="password" placeholder="Enter your password" class="input" name="password" type="password" required> 
+                <i class="fa fa-eye" id="togglePassword"></i>
+            </div>
         </div>
         <button class="button type1" type="submit">
             <span class="btn-txt">Log In</span>
         </button>
     </form>
-    <button class="button type1" type="submit">
-        <a href="/register">Register</a>
-    </button>
+    <div class="register">
+        Don't have an account yet?
+        <a class="link" href="/register">
+            <strong>Register</strong>
+        </a>
+        <p>
+        Iniciar Sesión con:
+        <a class="link" href="/api/sessions/github">
+            <strong> Github </strong>
+        </a>
+    </p> 
+    </div>
+        
 </div>
 
 <link rel="stylesheet" href="./css/login.css">

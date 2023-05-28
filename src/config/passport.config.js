@@ -1,5 +1,6 @@
 import passport from "passport";
 import local from 'passport-local';
+import GithubStrategy from 'passport-github2';
 import config from "./config.js";
 import { userService } from "../dao/index.js";
 import { createHash, validatePassword } from "../services/auth.js";
@@ -25,7 +26,6 @@ const initializePassport = () => {
         };
         let result = await userService.createUser(newUser);
         return done(null,result);
-
         } catch (error) {
             done(error)
         }
@@ -40,6 +40,31 @@ const initializePassport = () => {
         const isValidPWD = await validatePassword(password, user.password);
         if(!isValidPWD) return done(null,false,{message:"Incorrect password."});
         return done(null,user);
+    }));
+
+    passport.use('github', new GithubStrategy({
+        clientID: process.env.GITHUB_USER,
+        clientSecret: process.env.GITHUB_PWD,
+        callbackURL: 'http://localhost:8080/api/sessions/githubcallback' 
+    }, async (accessToken, refreshToken, profile, done) => {
+        try {
+            console.log(profile);
+            const {name, email} = profile._json;
+            const user = await userService.getUserBy({email});
+            if(!user) {
+                const newUser = {
+                    firstName: name,
+                    email,
+                    password: '' 
+                }
+                const result = await userService.bulkSave(newUser);
+                return done(null, result);
+            }
+            done(null, user)
+        } catch (error) {
+            done(error);
+            console.log('ERROR EN PASSPORT - GITHUB')
+        }
     }))
 
     passport.serializeUser(function(user, done) {

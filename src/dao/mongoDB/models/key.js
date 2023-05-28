@@ -17,7 +17,7 @@ const schema = new mongoose.Schema({
     },
     usagesLeft:{
         type: Number,
-        default: 10
+        default: 15
     },
     status: {
         type: String,

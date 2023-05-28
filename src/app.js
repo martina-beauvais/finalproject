@@ -11,10 +11,13 @@ import sessionRouter from './routes/sessions.router.js';
 import productRouter from './routes/products.router.js';
 import cartRouter from './routes/carts.router.js';
 import keyRouter from './routes/keys.router.js';
+import infoRouter from './routes/info.router.js';
 
 import __dirname from './utils.js';
 import initializePassport from './config/passport.config.js';
 import config from './config/config.js';
+import { addLoger, levels } from './services/loggers.js';
+
 
 const app = express();
 const PORT = config.port.PORT;
@@ -45,5 +48,13 @@ app.use('/api/sessions/', sessionRouter);
 app.use('/api/products/', productRouter);
 app.use('/api/carts/', cartRouter);
 app.use('/api/keys', keyRouter);
+app.use('/info', infoRouter)
+
+// LOGGER --
+app.use(addLoger);
+app.get('/pruebaLogger', (req, res) => {
+    levels;
+    res.send("ok");
+})
 
 app.listen(PORT,()=>console.log(`http://localhost:${PORT}`))
