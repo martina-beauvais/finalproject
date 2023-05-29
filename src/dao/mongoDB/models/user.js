@@ -14,6 +14,9 @@ const schema = new mongoose.Schema({
         type: String,
         default: 'user'
     },
+    direccion: {
+        type: String,
+    },
     cart: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'carts'

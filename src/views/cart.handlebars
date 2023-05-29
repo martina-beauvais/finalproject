@@ -6,13 +6,16 @@
     {{#each products}}
     <div class="cardCart shadow">
         <div class="container">
-            <div class="row">
+            <div class="row" id="{{this._id}}">
                 <div class="col">
                     <img src="{{this.thumbnail}}" alt="" class="imagenCart">
                 </div>
                 <div class="col">
                     <p>{{this.title}} x {{this.quantify}}</p>
                     <p>${{this.price}}</p>
+                    <form action="/api/carts/deleteProduct" method="POST">
+                        <button class="btn btn-danger" type="submit">ELIMINAR</button>
+                    </form>
                 </div>
                 
             </div>

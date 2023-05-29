@@ -1,1 +1,2 @@
-{"level":"error","message":"GET en /favicon.ico - function toLocaleTimeString() { [native code] }"}
+{"level":"error","message":"GET en /favicon.ico - function toLocaleTimeString() { [native code] }"},
+{"level":"error","message":"GET en /api/cart - function toLocaleTimeString() { [native code] }"}

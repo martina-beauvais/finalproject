@@ -1,3 +1,11 @@
+const myFunction = document.getElementById('togglePassword2');
+const password = document.getElementById('password2')
+myFunction.addEventListener('click', function() {
+    this.classList.toggle("fa-eye-slash")
+    const type = password.getAttribute("type") === "password2" ? "text" : "password2"
+    password.setAttribute("type", type)
+});
+
 const form = document.getElementById('registerForm');
 
 form.addEventListener('submit',async e => {

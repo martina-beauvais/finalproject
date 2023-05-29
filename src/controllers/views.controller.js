@@ -69,26 +69,24 @@ const contact = (req, res) => {
 const cart = async(req,res) => {
     const cartId = req.user.cart
     const cart = await cartService.getCartById(cartId, {populate:true});
-    console.log(cart.products);
+    //console.log(cart.products);
     const products = cart.products.map((product) => ({
         ...product._id,
-        quantify: product.quantify
+        quantify: product.quantify++
     }));
     const totalPrice = products.reduce((acum, product) => acum + product.price * product.quantify, 0)
     res.render('cart', {
         products,
         user: req.user,
         totalPrice,
-        title: "Cart - Pandora",
-        css: 'cart'
+        title: "Cart - Pandora"
     })
 };
 
 const finishPurchase = async(req,res) =>{
     res.render('payMethod', {
         user:req.user, 
-        title: "Pay Method - Pandora", 
-        css: 'cart'
+        title: "Pay Method - Pandora"    
     })
 }
 
@@ -96,8 +94,7 @@ const finishedPurchase = async (req, res) => {
     //const user = await userService.getUserBy({_id:req.user.id})
     res.render('finishedPurchase', { 
         user: req.user , 
-        title: "Finished Purchase - Pandora", 
-        css: 'purchase'
+        title: "Finished Purchase - Pandora"
     });
 };
 
@@ -106,8 +103,7 @@ const logout = async (req,res) => {
     res.clearCookie(process.env.JWT_COOKIE)
     res.render('logout', {
         user: req.user, 
-        title: "Log out - Pandora",
-        css: 'logout'
+        title: "Log out - Pandora"
     })
 }
 

@@ -1,4 +1,5 @@
 import cartModel from "./models/cart.js";
+import productsModel from "./models/product.js";
 
 export default class cartDAO{
     getCartById = (id, options={}) => {
@@ -11,4 +12,10 @@ export default class cartDAO{
     updateCart = (id, cart) => {
         return cartModel.findByIdAndUpdate(id, {$set: cart});
     };
+    deleteProductById = (params) => {
+        return productsModel.findOneAndRemove(params);
+    }
+    deleteCart = (id) => {
+        return cartModel.findByIdAndDelete(id, {products: []})
+    }
 };
