@@ -27,10 +27,10 @@ const schema = new mongoose.Schema({
             },
             purchase: Date
         }
-    ]
+    ],
+    address: String
 })
 
-collection.schema.add({address: String})
 
 const userModel = mongoose.model(collection, schema);
 
