@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({
         type: String,
         default: 'user'
     },
-    direccion: {
+    address: {
         type: String,
     },
     cart: {

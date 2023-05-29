@@ -7,6 +7,6 @@ const router = Router();
 router.get('/product/:pro',cartsController.insertProductToCart);
 router.get('/purchase', cartsController.purchase);
 router.post('/deleteProduct', cartsController.deleteProductById);
-router.delete('/:id', cartsController.deleteCart);
+router.post('/deleteAll', cartsController.deleteCart);
 
 export default router; 

@@ -26,9 +26,15 @@ const insertProductToCart = async(req,res) =>{
 
 const deleteCart = async(req,res) => {
     try{
-        const cartId = req.params.id;
-        await cartService.deleteCartById(cartId);
-        return res.json('Cart deleted');
+        const user = req.user
+        const product = req.params.pro;
+        const cart = await cartService.getCartById(user.cart)
+
+        await cartService.deleteCart({_id: product});
+        cart.products.splice({_id: product})
+        await cartService.updateCart(cart._id, {products: cart.products})
+        console.log(cart.products);
+        return res.redirect('/cart')
     }catch(error){
         return res.status(404).json({
             error: `ERROR AL ELIMINAR CARRITO POR ID ${error}`
@@ -41,16 +47,17 @@ const deleteProductById = async (req,res)=>{
         const user = req.user
         const product = req.params.pro;
         const cart = await cartService.getCartById(user.cart)
+        const exists = cart.products.find(product=>product._id.toString()===product);
 
         await cartService.deleteProductById({_id: product});
-        cart.products.splice({_id: product}, 1);
+        cart.products.splice(exists, 1)
         await cartService.updateCart(cart._id, {products: cart.products})
         console.log(cart.products);
         return res.redirect('/cart')
     }catch(error){
-        console.log("ERROR AL BORRAR UN PRODUCTO POR ID:", error);
+        console.log("Error deleting the product:", error);
         return res.status(404).json({
-            error: `ERROR AL BORRAR UN PRODUCTO POR ID ${error}`
+            error: `Error deleting the product ${error}`
         });
     }
 };
@@ -95,7 +102,7 @@ const purchase = async(req,res) => {
             <h1>Order: </h1>
             <p>Date: ${DateTime.now().toISO()}</p>
             <p>Code: <strong> ${ticket.code} </strong></p>
-            <p>Address of delivery: <strong> ${user.direccion} </strong></p>
+            <p>Address of delivery: <strong> ${user.address} </strong></p>
             <hr>
             <div>
                 ${order}

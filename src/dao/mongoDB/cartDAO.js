@@ -15,7 +15,7 @@ export default class cartDAO{
     deleteProductById = (params) => {
         return productsModel.findOneAndRemove(params);
     }
-    deleteCart = (id) => {
-        return cartModel.findByIdAndDelete(id, {products: []})
+    deleteCart = (params) => {
+        return productsModel.findOneAndRemove(params)
     }
 };
