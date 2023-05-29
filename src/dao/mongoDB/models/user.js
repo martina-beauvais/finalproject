@@ -14,9 +14,6 @@ const schema = new mongoose.Schema({
         type: String,
         default: 'user'
     },
-    address: {
-        type: String,
-    },
     cart: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'carts'
@@ -32,6 +29,8 @@ const schema = new mongoose.Schema({
         }
     ]
 })
+
+schema.add({address: String})
 
 
 const userModel = mongoose.model(collection, schema);
